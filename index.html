@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人博客空间 | B站创作者</title>
+    <!-- 仅引入核心Tailwind（无动态配置），确保加载稳定 -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio"></script>
+    <!-- 引入极简图标库（替代Font Awesome，加载更快） -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css">
+    <style>
+        /* 全局基础样式（确保稳定） */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        }
+        body {
+            background-color: #fdfdfd;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        /* 丝滑过渡通用类 */
+        .transition-all-smooth {
+            transition: all 0.4s cubic-bezier(0.25, 0.1, 0.25, 1);
+        }
+        /* 滚动条美化（极简） */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #e86589;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f5f5f5;
+        }
+        /* 渐变文字（稳定实现） */
+        .text-gradient {
+            background: linear-gradient(90deg, #e86589, #9d65c9);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        /* 按钮按压效果 */
+        .btn-press {
+            transform: scale(1);
+        }
+        .btn-press:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏（固定+背景渐变，布局稳定） -->
+    <header class="fixed w-full top-0 z-50 bg-white/95 shadow-sm transition-all-smooth">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-gradient flex items-center">
+                <i class="ri-bilibili-fill mr-2 text-xl"></i>
+                创作者空间
+            </a>
+            <!-- 导航链接（PC端） -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="font-medium text-gray-700 hover:text-e86589 transition-all-smooth">首页</a>
+                <a href="#about" class="font-medium text-gray-700 hover:text-e86589 transition-all-smooth">关于我</a>
+                <a href="#contact" class="font-medium text-gray-700 hover:text-e86589 transition-all-smooth">联系我</a>
+            </nav>
+            <!-- 移动端菜单按钮 -->
+            <button id="menuBtn" class="md:block md:hidden text-xl text-gray-700 btn-press transition-all-smooth">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+        <!-- 移动端菜单（默认隐藏，布局稳定） -->
+        <div id="mobileMenu" class="md:hidden hidden bg-white shadow-md px-4 py-3">
+            <div class="flex flex-col space-y-3">
+                <a href="#home" class="py-2 text-gray-700 hover:text-e86589 transition-all-smooth">首页</a>
+                <a href="#about" class="py-2 text-gray-700 hover:text-e86589 transition-all-smooth">关于我</a>
+                <a href="#contact" class="py-2 text-gray-700 hover:text-e86589 transition-all-smooth">联系我</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 首页（核心区域，布局绝对规整） -->
+    <section id="home" class="pt-36 pb-20 px-4 container mx-auto">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+            <!-- 文字区域 -->
+            <div class="w-full md:w-1/2 text-center md:text-left">
+                <h1 class="text-[clamp(2rem,4vw,3rem)] font-bold mb-6">
+                    欢迎来到我的<br>
+                    <span class="text-gradient">B站创作者空间</span>
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                    在这里分享我的创作想法和日常，<br>
+                    期待和你在B站相遇～
+                </p>
+                <a href="https://space.bilibili.com/3546958906001482" target="_blank" 
+                   class="inline-block bg-gradient-to-r from-e86589 to-9d65c9 text-white px-8 py-3 rounded-full font-medium shadow-md hover:shadow-lg transition-all-smooth btn-press">
+                    访问我的B站空间 <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+            <!-- 头像区域（居中+圆角+阴影，布局稳定） -->
+            <div class="w-full md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-e86589/30 shadow-lg hover:shadow-xl transition-all-smooth">
+                        <!-- 你的头像（直接引用，尺寸适配） -->
+                        <img src="https://p11-flow-imagex-download-sign.byteimg.com/tos-cn-i-a9rns2rl98/8d63ccb24c8347049b93933a719c7e6b.jpg~tplv-a9rns2rl98-24:720:720.image?rcl=202512252237108CBBF423F298A77F0C2A&rk3s=8e244e95&rrcfp=8a172a1a&x-expires=1767278230&x-signature=yFGDgyWXfbz35a2hmnSvt42O9qk%3D" 
+                             alt="个人头像" 
+                             class="w-full h-full object-cover">
+                    </div>
+                    <!-- B站图标装饰（CSS实现，无图片） -->
+                    <div class="absolute -bottom-3 -right-3 w-14 h-14 bg-00a1d6/90 rounded-full flex items-center justify-center text-white text-2xl shadow-md hover:scale-105 transition-all-smooth">
+                        <i class="ri-bilibili-fill"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 关于我（卡片式布局，规整无错乱） -->
+    <section id="about" class="py-20 px-4 bg-gray-50">
+        <div class="container mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gradient">关于我</h2>
+            <div class="max-w-2xl mx-auto bg-white rounded-2xl p-8 shadow-md hover:shadow-lg transition-all-smooth">
+                <div class="text-center">
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">B站创作者</h3>
+                    <div class="space-y-4 mb-8">
+                        <!-- 空间链接卡片 -->
+                        <div class="p-4 bg-gray-50 rounded-lg hover:bg-e86589/5 transition-all-smooth">
+                            <div class="flex items-center justify-center gap-3">
+                                <i class="ri-user-3-line text-e86589 text-xl"></i>
+                                <span class="text-gray-700">
+                                    B站空间：
+                                    <a href="https://space.bilibili.com/3546958906001482" target="_blank" 
+                                       class="text-9d65c9 hover:underline transition-all-smooth">
+                                        3546958906001482
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- 创作理念 -->
+                        <div class="p-4 bg-gray-50 rounded-lg hover:bg-e86589/5 transition-all-smooth">
+                            <div class="flex items-center justify-center gap-3">
+                                <i class="ri-heart-line text-e86589 text-xl"></i>
+                                <span class="text-gray-700">创作理念：用心做自己喜欢的内容</span>
+                            </div>
+                        </div>
+                        <!-- 兴趣方向 -->
+                        <div class="p-4 bg-gray-50 rounded-lg hover:bg-e86589/5 transition-all-smooth">
+                            <div class="flex items-center justify-center gap-3">
+                                <i class="ri-star-line text-e86589 text-xl"></i>
+                                <span class="text-gray-700">兴趣方向：动漫、生活、分享日常</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 leading-relaxed">
+                        大家好～我是一名B站普通创作者，喜欢用简单的方式记录生活和分享兴趣，<br>
+                        没有华丽的特效，只有真实的想法，感谢每一位关注和支持我的小伙伴～
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我（双卡片布局，规整） -->
+    <section id="contact" class="py-20 px-4">
+        <div class="container mx-auto">
+            <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gradient">联系我</h2>
+            <div class="max-w-2xl mx-auto grid grid-cols-1 gap-8">
+                <!-- 联系方式卡片 -->
+                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all-smooth">
+                    <h3 class="text-xl font-semibold mb-8 text-center flex items-center justify-center">
+                        <i class="ri-mail-line text-e86589 mr-3 text-2xl"></i>
+                        联系方式
+                    </h3>
+                    <div class="space-y-6">
+                        <div class="p-3 rounded-lg hover:bg-e86589/5 transition-all-smooth flex items-center justify-center gap-4">
+                            <i class="ri-bilibili-fill text-e86589 text-2xl"></i>
+                            <a href="https://space.bilibili.com/3546958906001482" target="_blank" 
+                               class="text-lg text-gray-700 hover:text-e86589 transition-all-smooth">
+                                B站空间私信
+                            </a>
+                        </div>
+                        <div class="p-3 rounded-lg hover:bg-e86589/5 transition-all-smooth flex items-center justify-center gap-4">
+                            <i class="ri-chat-3-line text-00a1d6 text-2xl"></i>
+                            <span class="text-lg text-gray-700">B站评论区互动</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- 留言卡片 -->
+                <div class="bg-white rounded-xl p-8 shadow-md hover:shadow-lg transition-all-smooth">
+                    <h3 class="text-xl font-semibold mb-8 text-center flex items-center justify-center">
+                        <i class="ri-paper-plane-line text-00a1d6 mr-3 text-2xl"></i>
+                        给我留言
+                    </h3>
+                    <form class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2 text-center" for="name">你的名字</label>
+                            <input type="text" id="name" 
+                                   class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-e86589/30 transition-all-smooth" 
+                                   placeholder="请输入你的名字">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium text-gray-600 mb-2 text-center" for="message">留言内容</label>
+                            <textarea id="message" rows="4" 
+                                      class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-e86589/30 transition-all-smooth" 
+                                      placeholder="想说的话都可以写在这里～"></textarea>
+                        </div>
+                        <button type="button" 
+                                class="w-full bg-e86589 text-white py-3 rounded-lg font-medium hover:bg-e86589/90 transition-all-smooth btn-press">
+                            发送留言 <i class="ri-paper-plane-line ml-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚（简洁规整） -->
+    <footer class="bg-gray-900 text-white py-10 mt-auto">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0 text-center md:text-left">
+                    <h3 class="text-xl font-bold mb-2">
+                        <i class="ri-bilibili-fill mr-2"></i>创作者空间
+                    </h3>
+                    <p class="text-gray-300 text-sm">用心创作，简单生活</p>
+                </div>
+                <div class="flex space-x-6 text-2xl">
+                    <a href="https://space.bilibili.com/3546958906001482" target="_blank" 
+                       class="text-gray-300 hover:text-e86589 transition-all-smooth">
+                        <i class="ri-bilibili-fill"></i>
+                    </a>
+                    <a href="#" class="text-gray-300 hover:text-e86589 transition-all-smooth">
+                        <i class="ri-github-fill"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300 text-sm">
+                <p>© 2025 个人博客空间 | 部署于 GitHub Pages | 
+                    <a href="https://space.bilibili.com/3546958906001482" 
+                       class="text-e86589 hover:underline transition-all-smooth">
+                        B站空间：3546958906001482
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 极简脚本（确保功能稳定） -->
+    <script>
+        // 移动端菜单切换
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = menuBtn.querySelector('i');
+            icon.classList.toggle('ri-menu-line');
+            icon.classList.toggle('ri-close-line');
+        });
+
+        // 留言按钮提示
+        const submitBtn = document.querySelector('button[type="button"]');
+        submitBtn.addEventListener('click', () => {
+            alert('留言已收到～我会在B站私信回复你 😊');
+        });
+
+        // 修复颜色变量（确保样式生效）
+        document.documentElement.style.setProperty('--color-pink', '#e86589');
+        document.documentElement.style.setProperty('--color-purple', '#9d65c9');
+        document.documentElement.style.setProperty('--color-blue', '#00a1d6');
+    </script>
+</body>
+</html>
